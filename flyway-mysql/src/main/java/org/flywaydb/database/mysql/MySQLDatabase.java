@@ -20,14 +20,13 @@ import org.flywaydb.core.api.FlywayException;
 import org.flywaydb.core.api.MigrationType;
 import org.flywaydb.core.api.MigrationVersion;
 import org.flywaydb.core.api.configuration.Configuration;
-import org.flywaydb.core.internal.database.base.Database;
 import org.flywaydb.core.internal.database.base.BaseDatabaseType;
+import org.flywaydb.core.internal.database.base.Database;
 import org.flywaydb.core.internal.database.base.Table;
-import org.flywaydb.core.internal.exception.FlywaySqlException;
-import org.flywaydb.database.mysql.mariadb.MariaDBDatabaseType;
 import org.flywaydb.core.internal.jdbc.JdbcConnectionFactory;
 import org.flywaydb.core.internal.jdbc.JdbcTemplate;
 import org.flywaydb.core.internal.jdbc.StatementInterceptor;
+import org.flywaydb.database.mysql.mariadb.MariaDBDatabaseType;
 
 import java.sql.Connection;
 import java.sql.SQLException;
@@ -247,7 +246,7 @@ public class MySQLDatabase extends Database<MySQLConnection> {
             recommendFlywayUpgradeIfNecessary("5.0");
             return;
         }
-        ensureDatabaseIsRecentEnough("5.1");
+        ensureDatabaseIsRecentEnough("5.7");
         if (databaseType instanceof MariaDBDatabaseType) {
 
             ensureDatabaseNotOlderThanOtherwiseRecommendUpgradeToFlywayEdition("10.2", org.flywaydb.core.internal.license.Edition.ENTERPRISE);
@@ -255,7 +254,7 @@ public class MySQLDatabase extends Database<MySQLConnection> {
             recommendFlywayUpgradeIfNecessary("10.6");
         } else {
 
-            ensureDatabaseNotOlderThanOtherwiseRecommendUpgradeToFlywayEdition("8.0", org.flywaydb.core.internal.license.Edition.ENTERPRISE);
+            ensureDatabaseNotOlderThanOtherwiseRecommendUpgradeToFlywayEdition("5.7", org.flywaydb.core.internal.license.Edition.ENTERPRISE);
 
 
 
